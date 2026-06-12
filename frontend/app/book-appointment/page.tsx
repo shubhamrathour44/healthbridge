@@ -1,8 +1,7 @@
 'use client';
 export const dynamic = 'force-dynamic';
-export const dynamic = 'force-dynamic';
 
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useRouter, useSearchParams } from 'next/navigation';
 
@@ -22,7 +21,7 @@ interface Hospital {
   name: string;
 }
 
-function BookAppointmentContent() {
+export default function BookAppointmentPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const hospitalId = searchParams.get('hospitalId');
@@ -232,13 +231,5 @@ function BookAppointmentContent() {
         </div>
       </div>
     </div>
-  );
-}
-
-export default function BookAppointmentPage() {
-  return (
-    <Suspense fallback={<div className="min-h-screen bg-gray-50 flex items-center justify-center"><p>Loading...</p></div>}>
-      <BookAppointmentContent />
-    </Suspense>
   );
 }
